@@ -35,7 +35,7 @@ class User(AbstractBaseUser):
     USERNAME_FIELD = 'email'
     REQUIRED_FIELDS = []
 
-    objects = UserManager
+    objects = UserManager()
 
     def has_module_perms(self, app_label):
         return self.is_staff or self.is_superuser

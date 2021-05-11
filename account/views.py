@@ -19,7 +19,6 @@ class RegistrationView(APIView):
             return Response('Пользователь успешно зарегестрирован', status=201)
 
 
-
 class ActivationView(APIView):
     def get(self, request):
         activation_code = request.query_params.get('u')
@@ -38,6 +37,5 @@ class LogoutView(APIView):
 
     def post(self, request):
         user = request.user
-        #from rest_framework.authtoken.models import Token
         Token.objects.filter(user=user).delete()
         return Response('Вы успешно вышли', status=200)
