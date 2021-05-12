@@ -7,3 +7,4 @@ django-ckeditor==6.0.0
 pytils
 django-filter
 drf-yasg
+braintree==3.45.0

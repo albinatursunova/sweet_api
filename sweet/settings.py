@@ -12,6 +12,7 @@ https://docs.djangoproject.com/en/3.1/ref/settings/
 import os
 from decouple import config
 from pathlib import Path
+from braintree import Configuration, Environment
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve(strict=True).parent.parent
@@ -21,7 +22,7 @@ BASE_DIR = Path(__file__).resolve(strict=True).parent.parent
 # See https://docs.djangoproject.com/en/3.1/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'unrs%p_@$5!o1-r^38n!s53z2a43ze&+61vzrfn)a0)&s&7mn%'
+SECRET_KEY = config('SECRET_KEY')
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
@@ -47,7 +48,6 @@ INSTALLED_APPS = [
 
     'account',
     'product',
-
 ]
 
 MIDDLEWARE = [
@@ -153,3 +153,15 @@ REST_FRAMEWORK = {
         'rest_framework.authentication.TokenAuthentication',
     ]
 }
+
+
+# BRAINTREE_MERCHANT_ID = config('BRAINTREE_MERCHANT_ID') # ID продавца.
+# BRAINTREE_PUBLIC_KEY = config('BRAINTREE_PUBLIC_KEY') # Публичный ключ.
+# BRAINTREE_PRIVATE_KEY = config('BRAINTREE_PRIVATE_KEY') # Секретный ключ.
+#
+# Configuration.configure(
+# Environment.Sandbox,
+# BRAINTREE_MERCHANT_ID,
+# BRAINTREE_PUBLIC_KEY,
+# BRAINTREE_PRIVATE_KEY
+# )

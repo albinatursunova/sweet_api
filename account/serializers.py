@@ -1,5 +1,7 @@
 from django.contrib.auth import get_user_model, authenticate
 from rest_framework import serializers
+from django.contrib.auth.models import User
+
 
 from .utils import send_activation_mail
 
@@ -50,3 +52,10 @@ class LoginSerializer(serializers.Serializer):
             raise serializers.ValidationError('Email и пароль обязательны')
         attrs['user'] = user
         return attrs
+
+
+class ChangePasswordSerializer(serializers.Serializer):
+    model = User
+
+    old_password = serializers.CharField(required=True)
+    new_password = serializers.CharField(required=True)
