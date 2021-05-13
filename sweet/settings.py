@@ -45,6 +45,7 @@ INSTALLED_APPS = [
     'rest_framework',
     'rest_framework.authtoken',
     'django_filters',
+    'django_rest_passwordreset',
 
     'account',
     'product',
@@ -147,7 +148,7 @@ EMAIL_HOST_PASSWORD = config('EMAIL_PASSWORD')
 
 REST_FRAMEWORK = {
     'DEFAULT_PAGINATION_CLASS': 'rest_framework.pagination.PageNumberPagination',
-    'PAGE_SIZE': 10,
+    'PAGE_SIZE': 5,
     'DEFAULT_FILTER_BACKENDS': ['django_filters.rest_framework.DjangoFilterBackend'],
     'DEFAULT_AUTHENTICATION_CLASSES': [
         'rest_framework.authentication.TokenAuthentication',
@@ -161,7 +162,7 @@ REST_FRAMEWORK = {
 #
 # Configuration.configure(
 # Environment.Sandbox,
-# BRAINTREE_MERCHANT_ID,
-# BRAINTREE_PUBLIC_KEY,
-# BRAINTREE_PRIVATE_KEY
+# BRAINTREE_MERCHANT_ID = config('BRAINTREE_MERCHANT_ID') # ID продавца.
+# BRAINTREE_PUBLIC_KEY = config('BRAINTREE_PUBLIC_KEY') # Публичный ключ.
+# BRAINTREE_PRIVATE_KEY = config('BRAINTREE_PRIVATE_KEY') # Секретный ключ.
 # )
